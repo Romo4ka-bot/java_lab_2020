@@ -35,9 +35,7 @@ public class ThreadPool {
             Runnable task;
 
             while (true) {
-
                 synchronized (tasks) {
-                    System.out.println(tasks.size());
                     while (tasks.isEmpty()) {
                         try {
                             tasks.wait();

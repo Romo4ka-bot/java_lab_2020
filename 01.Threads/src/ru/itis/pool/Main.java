@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 //        ExecutorService executorService = Executors.newFixedThreadPool(2);
 //
-        ThreadPool threadPool = ThreadPool.newPool(2);
+        ThreadPool threadPool = ThreadPool.newPool(1);
         Runnable task1 = () -> {
             for (int i = 0; i < 100; i++) {
                 System.out.println(Thread.currentThread().getName() + " A");
@@ -25,7 +25,7 @@ public class Main {
                 System.out.println(Thread.currentThread().getName() + " C");
             }
         };
-//
+
 //        executorService.submit(task1);
 //        executorService.submit(task2);
 //        executorService.submit(task3);
