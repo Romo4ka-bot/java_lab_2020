@@ -20,11 +20,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
 
     public UsersRepositoryJdbcImpl(DataSource dataSource) {
         this.dataSource = dataSource;
-    }
-
-    public UsersRepositoryJdbcImpl(DataSource dataSource, SimpleJdbcTemplate template) {
-        this.dataSource = dataSource;
-        this.template = template;
+        template = new UsersRepositoryJdbcImpl(dataSource);
     }
 
     private RowMapper<User> userRowMapper = row -> User.builder()
