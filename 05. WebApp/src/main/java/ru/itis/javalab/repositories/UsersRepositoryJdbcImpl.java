@@ -14,20 +14,32 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     //language=SQL
     private static final String SQL_SELECT = "select * from users";
 
+    //language=SQL
+    private static final String SQL_INSERT_USER = "insert into users(username, age, uuid, password) " +
+            "values(?, ?, ?, ?);";
+
+    //language=SQL
+    private static final String SQL_UPDATE = "update users set username = ?, age = ?, uuid = ?, password = ? where id = ?";
+
     private DataSource dataSource;
 
     private SimpleJdbcTemplate template;
 
     public UsersRepositoryJdbcImpl(DataSource dataSource) {
         this.dataSource = dataSource;
-        template = new UsersRepositoryJdbcImpl(dataSource);
+    }
+
+    public UsersRepositoryJdbcImpl(DataSource dataSource, SimpleJdbcTemplate template) {
+        this.dataSource = dataSource;
+        this.template = template;
     }
 
     private RowMapper<User> userRowMapper = row -> User.builder()
             .id(row.getLong("id"))
-            .firstName(row.getString("first_name"))
-            .lastName(row.getString("last_name"))
+            .username(row.getString("username"))
             .age(row.getInt("age"))
+            .uuid(row.getString("uuid"))
+            .password(row.getString("password"))
             .build();
 
     @Override
@@ -51,22 +63,31 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     }
 
     @Override
-    public void save(User entity) {
+    public boolean save(User entity) {
 
+        String username = entity.getUsername();
+        Integer age = entity.getAge();
+        String uuid = entity.getUuid();
+        String password = entity.getPassword();
+
+        template.update(SQL_INSERT_USER, username, age, uuid, password);
     }
 
     @Override
     public void update(User entity) {
 
+        Long id = entity.getId();
+        String username = entity.getUsername();
+        Integer age = entity.getAge();
+        String uuid = entity.getUuid();
+        String password = entity.getPassword();
+
+        template.update(SQL_UPDATE, username, age, uuid, password, id);
     }
 
     @Override
-    public void deleteById(Long id) {
-
-    }
+    public void deleteById(Long id) {}
 
     @Override
-    public void delete(User entity) {
-
-    }
+    public void delete(User entity) {}
 }
