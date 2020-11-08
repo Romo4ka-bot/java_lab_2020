@@ -5,6 +5,7 @@ import ru.itis.javalab.models.User;
 import ru.itis.javalab.repositories.UsersRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UsersServiceImpl implements UsersService {
 
@@ -33,4 +34,18 @@ public class UsersServiceImpl implements UsersService {
                 .build());
     }
 
+    @Override
+    public Optional<User> getByUuid(String value) {
+        return usersRepository.findByUuid(value);
+    }
+
+    @Override
+    public User getByUsername(String username) {
+        return usersRepository.findAllByUsername(username);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        usersRepository.update(user);
+    }
 }

@@ -1,4 +1,6 @@
-package ru.itis.javalab.repositories;
+package ru.itis.javalab.repositories.old;
+
+import ru.itis.javalab.repositories.RowMapper;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -8,7 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: реализовать
 public class SimpleJdbcTemplate {
 
     private DataSource dataSource;

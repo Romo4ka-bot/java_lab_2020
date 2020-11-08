@@ -1,7 +1,6 @@
 package ru.itis.javalab.filters;
 
 import ru.itis.javalab.models.User;
-import ru.itis.javalab.service.CookiesService;
 import ru.itis.javalab.service.UsersService;
 
 import javax.servlet.*;
@@ -10,20 +9,17 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
-import java.util.UUID;
+import java.util.Optional;
 
 @WebFilter("/*")
 public class AuthFilter implements Filter {
 
-    private CookiesService cookiesService;
     private UsersService usersService;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         ServletContext servletContext = filterConfig.getServletContext();
-        cookiesService = (CookiesService) servletContext.getAttribute("cookieService");
-        usersService = (UsersService) filterConfig.getServletContext().getAttribute("usersService");
+        usersService = (UsersService) servletContext.getAttribute("usersService");
     }
 
     @Override
@@ -37,11 +33,9 @@ public class AuthFilter implements Filter {
         if (cookies != null)
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("Auth")) {
-                    List<User> users = usersService.getAllUsers();
-                    for (User user : users) {
-                        if (user.getUuid().equals(cookie.getValue())) {
-                            flag = true;
-                        }
+                    Optional<User> user = usersService.getByUuid(cookie.getValue());
+                    if (user.isPresent()) {
+                        flag = true;
                     }
                 }
             }

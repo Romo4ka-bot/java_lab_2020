@@ -11,10 +11,9 @@
     <title>Login</title>
 </head>
 <body>
-<form action="/login" method="post">
+<form action="${pageContext.request.contextPath}/login" method="post">
     <input type="text" name="username">
     <input type="text" name="password">
-    <input type="checkbox" name="remember">
     <input type="submit">
 </form>
 </body>

@@ -14,7 +14,7 @@
 <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
         <FileNamePattern>
-            /Users/romanleontev/Documents/GitHub/05. WebApp/src/main/resources/logs/%d{yyyy-MM-dd}.log
+            /Users/romanleontev/Documents/GitHub/java_lab_2020_semester3/05. WebApp/src/main/resources/logs/%d{yyyy-MM-dd}.log
         </FileNamePattern>
     </rollingPolicy>
 

@@ -21,7 +21,7 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
     private static final String SQL_SELECT_BY_ID = "select * from driver where id = ?";
 
     //language=SQL
-    private static final String SQL_SELECT_ALL_WITH_PAGES = "select * from driver order by id limit :limit offset :offset ;";
+    private static final String SQL_SELECT_ALL_WITH_PAGES = "select * from driver order by id limit :limit offset :offset;";
 
     //language=SQL
     private static final String SQL_SELECT_ALL = "select * from driver";
@@ -34,13 +34,22 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
             "values(?, ?, ?, ?, ?);";
 
     //language=SQL
-    private static final String SQL_UPDATE = "update users set firstName = ?, lastName = ?, age = ?, uuid = ?, password = ? where id = ?";
+    private static final String SQL_UPDATE = "update users set username = ?, age = ?, uuid = ?, password = ?, first_name = ?, last_name = ? where id = ?";
+
+    //language=SQL
+    private static final String SQL_SELECT_BY_UUID = "select * from users where uuid = ?";
+
+    //language=SQL
+    private static final String SQL_SELECT_BY_USERNAME = "select * from users where username = ?";
 
     private RowMapper<User> userRowMapper = (row, i) -> User.builder()
             .id(row.getLong("id"))
             .firstName(row.getString("first_name"))
             .lastName(row.getString("last_name"))
+            .username(row.getString("username"))
             .age(row.getInt("age"))
+            .uuid(row.getString("uuid"))
+            .password(row.getString("password"))
             .build();
 
     public UsersRepositoryJdbcTemplateImpl(DataSource dataSource) {
@@ -56,6 +65,23 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
     @Override
     public Optional<User> findFirstByFirstnameAndLastname(String firstName, String lastName) {
         return Optional.empty();
+    }
+
+    @Override
+    public Optional<User> findByUuid(String uuid) {
+        User user;
+        try {
+            user = jdbcTemplate.queryForObject(SQL_SELECT_BY_UUID, userRowMapper, uuid);
+        } catch (EmptyResultDataAccessException e) {
+            user = null;
+        }
+
+        return Optional.ofNullable(user);
+    }
+
+    @Override
+    public User findAllByUsername(String username) {
+        return jdbcTemplate.queryForObject(SQL_SELECT_BY_USERNAME, userRowMapper, username);
     }
 
     @Override
@@ -100,13 +126,14 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
     public void update(User entity) {
 
         Long id = entity.getId();
+        String username = entity.getUsername();
         String firstName = entity.getFirstName();
         String lastName = entity.getLastName();
         Integer age = entity.getAge();
         String uuid = entity.getUuid();
         String password = entity.getPassword();
 
-        jdbcTemplate.update(SQL_UPDATE, firstName, lastName, age, uuid, password, id);
+        jdbcTemplate.update(SQL_UPDATE, username, age, uuid, password, firstName, lastName, id);
     }
 
     @Override

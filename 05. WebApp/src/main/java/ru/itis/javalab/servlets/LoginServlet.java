@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -35,14 +36,16 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        List<User> userList = usersService.getAllUsers();
+        User user = usersService.getByUsername(username);
 
-        for (User user : userList) {
-            if (user.getUsername().equals(username)
-                    && user.getPassword().equals(password)) {
-                resp.addCookie(new Cookie("Auth", user.getUuid()));
-            }
+
+        if (user.getUsername().equals(username)
+                && user.getPassword().equals(password)) {
+            String uuid = UUID.randomUUID().toString();
+            user.setUuid(uuid);
+            usersService.updateUser(user);
+            resp.addCookie(new Cookie("Auth", user.getUuid()));
+            req.getRequestDispatcher("/WEB-INF/users.jsp").forward(req,resp);
         }
-
     }
 }
