@@ -45,7 +45,8 @@ public class LoginServlet extends HttpServlet {
             user.setUuid(uuid);
             usersService.updateUser(user);
             resp.addCookie(new Cookie("Auth", user.getUuid()));
-            req.getRequestDispatcher("/WEB-INF/users.jsp").forward(req,resp);
+            req.setAttribute("user", user);
+            req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req,resp);
         }
     }
 }
