@@ -6,12 +6,8 @@ import ru.itis.javalab.service.UsersService;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
-import java.util.List;
 import java.util.UUID;
 
 @WebServlet("/login")
@@ -45,8 +41,7 @@ public class LoginServlet extends HttpServlet {
             user.setUuid(uuid);
             usersService.updateUser(user);
             resp.addCookie(new Cookie("Auth", user.getUuid()));
-            req.setAttribute("user", user);
-            req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req,resp);
+            resp.sendRedirect("/profile");
         }
     }
 }

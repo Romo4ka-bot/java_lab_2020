@@ -6,10 +6,7 @@
 </head>
 <body>
 <div>
-    <%
-        User user = (User) request.getAttribute("user");
-    %>
-    Hello, <%=user.getUsername()%>
+    Hello, Anvar!
 </div>
 </body>
 </html>
