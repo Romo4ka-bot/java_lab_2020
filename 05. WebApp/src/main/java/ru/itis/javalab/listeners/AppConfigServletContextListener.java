@@ -3,6 +3,8 @@ package ru.itis.javalab.listeners;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.itis.javalab.repositories.UsersRepository;
 import ru.itis.javalab.repositories.UsersRepositoryJdbcTemplateImpl;
 import ru.itis.javalab.service.UsersService;
@@ -39,11 +41,13 @@ public class AppConfigServletContextListener implements ServletContextListener {
 
         UsersRepository usersRepository = new UsersRepositoryJdbcTemplateImpl(dataSource);
         UsersService usersService = new UsersServiceImpl(usersRepository);
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         ObjectMapper objectMapper = new ObjectMapper();
 
         servletContext.setAttribute("usersService", usersService);
         servletContext.setAttribute("objectMapper", objectMapper);
+        servletContext.setAttribute("passwordEncoder", passwordEncoder);
     }
 
     @Override

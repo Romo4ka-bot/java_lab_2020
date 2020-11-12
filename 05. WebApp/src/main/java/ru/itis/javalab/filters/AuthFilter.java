@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -28,22 +29,29 @@ public class AuthFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        Cookie[] cookies = request.getCookies();
+//        Cookie[] cookies = request.getCookies();
         boolean flag = false;
-        if (cookies != null)
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("Auth")) {
-                    Optional<User> user = usersService.getByUuid(cookie.getValue());
-                    if (user.isPresent()) {
-                        flag = true;
-                    }
-                }
-            }
+//        if (cookies != null)
+//            for (Cookie cookie : cookies) {
+//                if (cookie.getName().equals("Auth")) {
+//                    Optional<User> user = usersService.getByUuid(cookie.getValue());
+//                    if (user.isPresent()) {
+//                        flag = true;
+//                    }
+//                }
+//            }
+
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("user") != null) {
+            flag = true;
+        }
 
         if (!flag && !request.getRequestURI().equals("/login")) {
             response.sendRedirect("/login");
             return;
         }
+
+
 
         filterChain.doFilter(servletRequest, servletResponse);
     }

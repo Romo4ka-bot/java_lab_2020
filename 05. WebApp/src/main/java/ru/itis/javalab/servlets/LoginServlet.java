@@ -1,5 +1,6 @@
 package ru.itis.javalab.servlets;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.itis.javalab.models.User;
 import ru.itis.javalab.service.UsersService;
 
@@ -14,10 +15,12 @@ import java.util.UUID;
 public class LoginServlet extends HttpServlet {
 
     private UsersService usersService;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         usersService = (UsersService) config.getServletContext().getAttribute("usersService");
+        passwordEncoder = (PasswordEncoder) config.getServletContext().getAttribute("passwordEncoder");
         super.init(config);
     }
 
@@ -34,13 +37,16 @@ public class LoginServlet extends HttpServlet {
 
         User user = usersService.getByUsername(username);
 
+        System.out.println(passwordEncoder.matches(password ,user.getPassword()));
 
         if (user.getUsername().equals(username)
-                && user.getPassword().equals(password)) {
-            String uuid = UUID.randomUUID().toString();
-            user.setUuid(uuid);
+                && passwordEncoder.matches(password ,user.getPassword())) {
+//            String uuid = UUID.randomUUID().toString();
+//            user.setUuid(uuid);
             usersService.updateUser(user);
-            resp.addCookie(new Cookie("Auth", user.getUuid()));
+            HttpSession session = req.getSession();
+            session.setAttribute("user", user);
+//            resp.addCookie(new Cookie("Auth", user.getUuid()));
             resp.sendRedirect("/profile");
         }
     }

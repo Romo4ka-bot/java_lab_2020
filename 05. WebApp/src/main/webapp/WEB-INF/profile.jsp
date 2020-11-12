@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>
-    Hello, Anvar!
+    Hello, User!
 </div>
 </body>
 </html>
