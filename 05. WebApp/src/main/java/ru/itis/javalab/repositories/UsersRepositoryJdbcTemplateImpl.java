@@ -4,6 +4,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Repository;
 import ru.itis.javalab.models.User;
 
 import javax.sql.DataSource;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@Repository(value = "UsersRepositoryJdbcTemplateImpl")
 public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
 
     private JdbcTemplate jdbcTemplate;

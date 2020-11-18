@@ -1,5 +1,8 @@
 package ru.itis.javalab.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 import ru.itis.javalab.dto.UserDto;
 import ru.itis.javalab.models.User;
 import ru.itis.javalab.repositories.UsersRepository;
@@ -7,8 +10,11 @@ import ru.itis.javalab.repositories.UsersRepository;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UsersServiceImpl implements UsersService {
 
+    @Autowired
+    @Qualifier(value = "UsersRepositoryJdbcTemplateImpl")
     private UsersRepository usersRepository;
 
     public UsersServiceImpl(UsersRepository usersRepository) {

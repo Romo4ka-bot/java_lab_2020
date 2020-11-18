@@ -2,10 +2,12 @@ package ru.itis.javalab.servlets;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.context.ApplicationContext;
 import ru.itis.javalab.models.User;
 import ru.itis.javalab.repositories.UsersRepository;
-import ru.itis.javalab.repositories.UsersRepositoryJdbcTemplateImpl;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,16 +20,12 @@ public class UsersServlet extends HttpServlet {
     private UsersRepository usersRepository;
 
     @Override
-    public void init() throws ServletException {
-        HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl("jdbc:postgresql://localhost:5432/weblab");
-        hikariConfig.setDriverClassName("org.postgresql.Driver");
-        hikariConfig.setUsername("postgres");
-        hikariConfig.setPassword("111");
-        hikariConfig.setMaximumPoolSize(20);
-
+    public void init(ServletConfig config) throws ServletException {
+        ServletContext servletContext = config.getServletContext();
+        ApplicationContext applicationContext = (ApplicationContext) servletContext.getAttribute("applicationContext");
+        usersRepository = applicationContext.getBean(UsersRepository.class);
+        HikariConfig hikariConfig = applicationContext.getBean(HikariConfig.class);
         HikariDataSource dataSource = new HikariDataSource(hikariConfig);
-        usersRepository = new UsersRepositoryJdbcTemplateImpl(dataSource);
     }
 
     @Override
