@@ -1,10 +1,12 @@
 package ru.itis.javalab.servlets;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.itis.javalab.models.User;
 import ru.itis.javalab.service.UsersService;
 
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -19,14 +21,18 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        usersService = (UsersService) config.getServletContext().getAttribute("usersService");
-        passwordEncoder = (PasswordEncoder) config.getServletContext().getAttribute("passwordEncoder");
+//        usersService = (UsersService) config.getServletContext().getAttribute("usersService");
+//        passwordEncoder = (PasswordEncoder) config.getServletContext().getAttribute("passwordEncoder");
+        ServletContext servletContext = config.getServletContext();
+        ApplicationContext applicationContext = (ApplicationContext) servletContext.getAttribute("applicationContext");
+        usersService = applicationContext.getBean(UsersService.class);
+        passwordEncoder = applicationContext.getBean(PasswordEncoder.class);
         super.init(config);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/login.ftlh").forward(req, resp);
 
     }
 

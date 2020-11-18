@@ -1,12 +1,5 @@
 package ru.itis.homework;
 
-/**
- * 02.11.2020
- * 10. Reflection
- *
- * @author Sidikov Marsel (First Software Engineering Platform)
- * @version v1.0
- */
 public class User {
     private Long id;
     private String firstName;

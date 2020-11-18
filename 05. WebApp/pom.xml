@@ -84,5 +84,10 @@
             <artifactId>spring-security-core</artifactId>
             <version>5.4.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.30</version>
+        </dependency>
     </dependencies>
 </project>

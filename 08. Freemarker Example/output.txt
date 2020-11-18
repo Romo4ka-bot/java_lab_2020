@@ -1,0 +1,14 @@
+Hello, Marsel, your id is 1,
+
+    Age is undefined
+
+Other users:
+
+    Name: Сабина
+    Age: 20
+    Name: Александра
+    Age: 19
+    Name: Анастасия
+    Age: 19
+    Name: Шамиль
+    Age: 19

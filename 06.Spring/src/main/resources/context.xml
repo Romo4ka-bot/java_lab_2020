@@ -30,9 +30,9 @@
 
     <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
         <property name="maximumPoolSize" value="20"/>
-        <property name="password" value="qwerty007"/>
+        <property name="password" value="111"/>
         <property name="driverClassName" value="org.postgresql.Driver"/>
         <property name="username" value="postgres"/>
-        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/11-901"/>
+        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/weblab"/>
     </bean>
 </beans>
