@@ -8,13 +8,6 @@ import ru.itis.javalab.services.UsersService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * 16.11.2020
- * 13. Web MVC
- *
- * @author Sidikov Marsel (First Software Engineering Platform)
- * @version v1.0
- */
 public class UsersController implements Controller {
 
     @Autowired
