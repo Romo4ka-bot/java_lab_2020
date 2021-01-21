@@ -32,8 +32,8 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public void addUser(UserDto userDto) {
-        usersRepository.save(User.builder()
+    public Long addUser(UserDto userDto) {
+       return usersRepository.saveUser(User.builder()
                 .age(null)
                 .firstName(userDto.getFirstName())
                 .lastName(userDto.getLastName())

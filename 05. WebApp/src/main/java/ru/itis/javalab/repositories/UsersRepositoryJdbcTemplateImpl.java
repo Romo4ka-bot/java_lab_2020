@@ -3,7 +3,11 @@ package ru.itis.javalab.repositories;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import ru.itis.javalab.models.User;
 
@@ -33,7 +37,7 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
 
     //language=SQL
     private static final String SQL_INSERT_USER = "insert into users(firstName, lastName, age, uuid, password) " +
-            "values(?, ?, ?, ?, ?);";
+            "values(:firstName, :lastName, :age, :uuid, :password);";
 
     //language=SQL
     private static final String SQL_UPDATE = "update users set username = ?, age = ?, uuid = ?, password = ?, first_name = ?, last_name = ? where id = ?";
@@ -113,15 +117,28 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
     }
 
     @Override
-    public void save(User entity) {
+    public void save(User entity) {}
+
+    @Override
+    public Long saveUser(User entity) {
 
         String firstName = entity.getFirstName();
         String lastName = entity.getLastName();
         Integer age = entity.getAge();
         String uuid = entity.getUuid();
         String password = entity.getPassword();
+        Map<String, Object> map = new HashMap<>();
+        map.put("firstName", firstName);
+        map.put("lastname", lastName);
+        map.put("age", age);
+        map.put("uuid", uuid);
+        map.put("password", password);
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource(map);
 
-        jdbcTemplate.update(SQL_INSERT_USER, firstName, lastName, age, uuid, password);
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+
+        namedParameterJdbcTemplate.update(SQL_INSERT_USER, sqlParameterSource, keyHolder);
+        return (Long) keyHolder.getKey();
     }
 
     @Override

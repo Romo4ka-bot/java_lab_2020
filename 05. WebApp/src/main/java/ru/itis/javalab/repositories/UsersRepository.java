@@ -12,4 +12,6 @@ public interface UsersRepository extends CrudRepository<User> {
     Optional<User> findByUuid(String value);
 
     User findAllByUsername(String username);
+
+    Long saveUser(User entity);
 }

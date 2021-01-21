@@ -49,7 +49,8 @@ public class UsersJsonServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Reader reader = req.getReader();
         UserDto json = objectMapper.readValue(reader, UserDto.class);
-        usersService.addUser(json);
+        Long id = usersService.addUser(json);
+        json.setId(id);
     }
 }
 

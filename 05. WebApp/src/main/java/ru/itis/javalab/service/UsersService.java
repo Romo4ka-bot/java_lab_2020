@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface UsersService {
     List<User> getAllUsers();
     List<UserDto> getAllUser(int page, int size);
-    void addUser(UserDto userDto);
+    Long addUser(UserDto userDto);
 
     Optional<User> getByUuid(String value);
 
