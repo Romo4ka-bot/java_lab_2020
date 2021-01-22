@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @WebFilter("/*")
 public class AuthFilter implements Filter {
@@ -29,24 +31,25 @@ public class AuthFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
+        AtomicBoolean flag = new AtomicBoolean(false);
+
+        // 1) Homework with cookie
+
 //        Cookie[] cookies = request.getCookies();
-        boolean flag = false;
+//
 //        if (cookies != null)
-//            for (Cookie cookie : cookies) {
-//                if (cookie.getName().equals("Auth")) {
-//                    Optional<User> user = usersService.getByUuid(cookie.getValue());
-//                    if (user.isPresent()) {
-//                        flag = true;
-//                    }
-//                }
-//            }
+//
+//            Arrays.stream(cookies).filter(cookie -> cookie.getName().equals("Auth")).forEach(cookie ->
+//                    usersService.getByUuid(cookie.getValue()).ifPresent(userCurr -> flag.set(true)));
+
+        // 2) Homework with session
 
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("user") != null) {
-            flag = true;
+            flag.set(true);
         }
 
-        if (!flag && !request.getRequestURI().equals("/login")) {
+        if (!flag.get()) {
             response.sendRedirect("/login");
             return;
         }

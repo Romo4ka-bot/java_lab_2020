@@ -92,6 +92,11 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     }
 
     @Override
+    public Long saveUser(User entity) {
+        return null;
+    }
+
+    @Override
     public List<User> findAll() {
         // TODO: return template.query(SQL_SELECT, usersRowMapper);
         Connection connection = null;
