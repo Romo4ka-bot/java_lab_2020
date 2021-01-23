@@ -1,4 +1,4 @@
-package ru.itis.javalab.homework;
+package ru.itis.javalab;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -7,9 +7,9 @@ import java.net.Socket;
 
 public class Client {
 
-    Socket client;
-    DataInputStream in;
-    DataOutputStream out;
+    private Socket client;
+    private DataInputStream in;
+    private DataOutputStream out;
 
     public Client(Socket client) {
 
@@ -21,6 +21,7 @@ public class Client {
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }
+
         Runnable writeMsg = () -> {
             while (true) {
                 String message;
@@ -32,6 +33,7 @@ public class Client {
                 }
             }
         };
+
         new Thread(writeMsg).start();
     }
 

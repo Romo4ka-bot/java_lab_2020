@@ -1,16 +1,16 @@
-package ru.itis.javalab.homework;
+package ru.itis.javalab;
 
 import com.beust.jcommander.JCommander;
 
 public class MainServer {
     public static void main(String[] argv) {
-        Args args = new Args();
+        ServerArgs serverArgs = new ServerArgs();
 
         JCommander.newBuilder()
-                .addObject(args)
+                .addObject(serverArgs)
                 .build()
                 .parse(argv);
 
-        new Server(args.port);
+        new Server(serverArgs.port);
     }
 }

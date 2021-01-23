@@ -1,4 +1,4 @@
-package ru.itis.javalab.homework;
+package ru.itis.javalab;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

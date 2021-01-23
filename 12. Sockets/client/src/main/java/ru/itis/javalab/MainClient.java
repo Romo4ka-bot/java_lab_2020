@@ -1,8 +1,7 @@
-package ru.itis.javalab.homework;
+package ru.itis.javalab;
 
 import com.beust.jcommander.JCommander;
 
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
@@ -10,7 +9,7 @@ import java.util.Scanner;
 
 public class MainClient {
     public static void main(String[] argv) {
-        Args args = new Args();
+        ClientArgs args = new ClientArgs();
 
         JCommander.newBuilder()
                 .addObject(args)
