@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @WebFilter("/*")
@@ -45,11 +44,12 @@ public class AuthFilter implements Filter {
         // 2) Homework with session
 
         HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("user") != null) {
-            flag.set(true);
+        if (session != null) {
+            User user = (User) session.getAttribute("user");
+            usersService.getByUuid(user.getUuid()).ifPresent(userCurr -> flag.set(true));
         }
 
-        if (!flag.get()) {
+        if (!flag.get() && !request.getRequestURI().equals("/login")) {
             response.sendRedirect("/login");
             return;
         }

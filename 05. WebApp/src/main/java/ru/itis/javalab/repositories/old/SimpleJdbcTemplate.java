@@ -27,8 +27,6 @@ public class SimpleJdbcTemplate {
             connection = dataSource.getConnection();
             statement = connection.prepareStatement(sql);
 
-            List<T> result = new ArrayList<>();
-
             if (args != null)
 
                 for (int i = 0; i < args.length; i++) {
@@ -36,6 +34,8 @@ public class SimpleJdbcTemplate {
                 }
 
             resultSet = statement.executeQuery();
+
+            List<T> result = new ArrayList<>();
 
             while (resultSet.next()) {
                 T current = rowMapper.mapRow(resultSet);
@@ -85,6 +85,7 @@ public class SimpleJdbcTemplate {
                 }
 
             statement.executeUpdate();
+
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         } finally {
