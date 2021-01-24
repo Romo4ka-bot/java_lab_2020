@@ -12,13 +12,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- * 02.11.2020
- * 10. Reflection
- *
- * @author Sidikov Marsel (First Software Engineering Platform)
- * @version v1.0
- */
 public class EntityManager {
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
