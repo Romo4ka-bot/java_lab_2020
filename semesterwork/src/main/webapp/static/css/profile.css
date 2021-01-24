@@ -1,0 +1,109 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #1b1b1b;
+    font-family: Poppins, sans-serif;
+    color: #bc9262;
+    min-height: 100vh;
+}
+
+.navbar-dark {
+    background-color: black;
+}
+
+.navbar-brand {
+    margin: 0 0 0 40px;
+}
+
+
+
+.bottom__div {
+    height: 20px;
+    width: 100%;
+    background-color: black;
+}
+
+
+
+/* */
+
+
+.users_profile {
+    margin-left: 150px;
+    margin-right: 150px;
+    text-align: center;
+    color: white;
+}
+
+.users_profile span {
+    color: #bc9262;
+}
+
+.users_profile .edit {
+    display: inline-block;
+}
+
+.users_profile .edit p a img {
+    width: 2vw;
+    margin-right: 0.5vw;
+}
+
+.users_profile .edit a {
+    font-size: 1.1vw;
+    color: #bc9262;
+}
+
+.users_profile .users_photo {
+    width: 16vw;
+    border-radius: 6px;
+    vertical-align: top;
+    margin-bottom: 20px;
+}
+
+.users_profile .users_information {
+    display: inline-block;
+    padding-right: 20px;
+    padding-left: 20px;
+    vertical-align: top;
+}
+
+.users_profile .users_information p {
+    font-size: 2vw;
+}
+
+.users_profile .about_me {
+
+}
+
+.users_profile .about_me p {
+    font-size: 1.5vw;
+}
+
+@media (min-device-width: 100px) and (max-device-width: 994px) {
+
+    .wrapper {
+        justify-content: normal;
+    }
+
+    .users_profile .users_information p {
+        font-size: 3vw;
+    }
+    .users_profile .edit a {
+        font-size: 3vw;
+    }
+
+    .users_profile .about_me p {
+        font-size: 3vw;
+    }
+    .bottom__div {
+        position: relative;
+        top: 54vw;
+    }
+}
+

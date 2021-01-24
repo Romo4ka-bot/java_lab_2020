@@ -1,0 +1,214 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #1b1b1b;
+    font-family: Poppins, sans-serif;
+    color: #bc9262;
+    min-height: 100vh;
+}
+
+.navbar-dark {
+    background-color: black;
+}
+
+.navbar-brand {
+    margin: 0 0 0 40px;
+}
+
+.search {
+    margin: 40px auto;
+    width: 80%;
+}
+
+.search__bar {
+    display: flex;
+    position: relative;
+}
+.search_term {
+    width: 100%;
+    border: 3px solid #bc9262;
+    border-right: none;
+    padding: 5px;
+    height: 40px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: black;
+}
+
+.btn_search, .btn_open_more {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #bc9262;
+    background: #bc9262;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.btn_search {
+    border-radius: 0 5px 5px 0;
+}
+
+.search__div {
+    width: 100%;
+    background-color: #bc9262;
+    color: white;
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition:max-height 0.3s linear;
+    -moz-transition:max-height 0.3s linear;
+    transition:max-height 0.3s linear;
+}
+
+.search__config {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 20px;
+}
+
+.config__sort_by {
+    width: 250px;
+}
+
+.prise_interval {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.prise_interval div {
+    margin: 2px;
+}
+
+.prise_interval__text {
+    font-weight: bold;
+}
+
+.prise_interval__input {
+    width: 100px;
+}
+
+.card_holder {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.card_item {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0;
+    background-color: white;
+    height: 200px;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.card__image img {
+    width: 200px;
+    max-height: 200px;
+}
+
+.card__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.card__text {
+    padding: 5px 0 5px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.text__heading div a {
+    text-decoration: none;
+    color: #bc9262;
+}
+
+.heading__review {
+    font-size: 13px;
+}
+
+.heading__review:hover {
+    text-decoration: underline;
+}
+
+.heading__name {
+    font-size: 25px;
+}
+
+.card__prise {
+    border-left: 2px solid #f2f2f2;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.prise__count {
+    margin: 0 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.prise__btn a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.prise__btn a {
+    color: white;
+}
+
+.prise__btn {
+    text-transform: uppercase;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: #bc9262;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.prise__btn:hover {
+    background-color: forestgreen;
+    transition:background-color 0.3s linear;
+}
+
+.bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pagination {
+    margin: 10px auto;
+}
+
+.bottom__div {
+    height: 20px;
+    width: 100%;
+    background-color: black;
+}
+
+.pagination {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}

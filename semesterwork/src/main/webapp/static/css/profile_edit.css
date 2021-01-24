@@ -1,0 +1,110 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #1b1b1b;
+    font-family: Poppins, sans-serif;
+    color: #bc9262;
+    min-height: 100vh;
+}
+
+.navbar-dark {
+    background-color: black;
+}
+
+.navbar-brand {
+    margin: 0 0 0 40px;
+}
+
+
+
+.bottom__div {
+    height: 20px;
+    width: 100%;
+    background-color: black;
+}
+
+
+/**/
+
+.settings {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.settings .change_photo {
+    display: inline-block;
+}
+
+.settings .change_photo img {
+    width: 16vw;
+    border-radius: 6px;
+    margin-bottom: 1vw;
+}
+
+.settings .change_photo p {
+    text-align: center;
+}
+
+.settings .change_photo input {
+    text-align: center;
+}
+
+.settings .union {
+    vertical-align: top;
+    display: inline-block;
+    margin-left: 2vw;
+}
+
+.settings .union .change_name p,
+.settings .union .change_birth_date p,
+.settings .union .change_photo p,
+.settings .union .change_gender p {
+    margin: 0;
+    padding: 0;
+    font-size: 2vw;
+}
+
+.settings .union .change_name {
+    margin-bottom: 1vw;
+}
+
+.settings .union .change_name input {
+    width: 25vw;
+    margin-left: 2vw;
+    height: 2.2vw;
+    font-size: 1.5vw;
+    padding-left: 1vw;
+    margin-right: 0.5vw;
+}
+
+.settings .union .change_birth_date input {
+    margin-left: 2vw;
+    height: 2.2vw;
+    font-size: 1.5vw;
+    padding-left: 1vw;
+    margin-right: 0.5vw;
+}
+
+.settings .change_about_me textarea {
+    width: 60vw;
+    height: 10vw;
+    margin-right: 0.5vw;
+    padding-left: 1vw;
+}
+
+.settings .change_about_me button{
+    position: relative;
+    top: 1vw;
+}
+
+.settings button {
+    background-color: #bc9262;
+    border-radius: 6px;
+    outline: none;
+}

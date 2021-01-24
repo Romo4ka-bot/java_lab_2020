@@ -1,0 +1,87 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #1b1b1b;
+    font-family: Poppins, sans-serif;
+    color: white;
+    min-height: 100vh;
+}
+
+.navbar-dark {
+    background-color: black;
+}
+
+.navbar-brand {
+    margin: 0 0 0 40px;
+}
+
+.confirmation {
+    width: 60%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.confirmation__heading {
+    font-size: 40px;
+    margin: 10px;
+}
+
+.confirmation__holder {
+    display: flex;
+    flex-direction: row;
+}
+
+.holder__image img {
+    width: 25vw;
+}
+
+.holder__text_holder {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.holder__text_holder div {
+    margin: 15px 5px;
+}
+
+.text__btn a:hover {
+    text-decoration: none;
+}
+
+.text__btn a {
+    color: white;
+}
+
+.text__btn {
+    text-transform: uppercase;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: #bc9262;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.text__btn:hover {
+    background-color: forestgreen;
+    transition:background-color 0.3s linear;
+}
+
+.bottom__div {
+    height: 20px;
+    width: 100%;
+    background-color: black;
+}
+

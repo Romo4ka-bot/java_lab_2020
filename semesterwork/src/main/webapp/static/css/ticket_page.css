@@ -1,0 +1,206 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    text-indent: 20px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #1b1b1b;
+    font-family: Poppins, sans-serif;
+    color: #bc9262;
+    min-height: 100vh;
+}
+
+.navbar-dark {
+    background-color: black;
+}
+
+.navbar-brand {
+    margin: 0 0 0 40px;
+}
+
+.ticket_container {
+    margin: 20px auto;
+    width: 80%;
+}
+
+.ticket_div {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.ticket__image img {
+    width: 100%;
+    max-height: 80vh;
+    border-radius: 20px 20px 0 0;
+    object-fit: cover;
+}
+
+.ticket__information {
+    padding: 10px 20px;
+    color: black;
+}
+
+.information__head {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.ticket__prise {
+    border-top: 2px solid #f2f2f2;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prise__day {
+    display: flex;
+    flex-direction: row;
+}
+
+.count__date, .count__inf {
+    margin: 0 5px;
+}
+
+.prise__buy {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.prise__count {
+    margin: 0 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.prise__btn a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.prise__btn a {
+    color: white;
+}
+
+.prise__btn {
+    text-transform: uppercase;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: #bc9262;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.prise__btn:hover {
+    background-color: forestgreen;
+    transition: background-color 0.3s linear;
+}
+
+.comments_div {
+    width: 80%;
+    margin: 5px auto;
+}
+
+.comments_heading {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0 20px 20px 20px;
+}
+
+.comment, .comment_us {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-radius: 20px;
+    width: 100%;
+    color: black;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.comment_us {
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.comment_us__input {
+    padding: 10px;
+    width: 100%;
+}
+
+.comment_us__input textarea {
+    width: 100%;
+    height: 5vw;
+}
+
+.comment_us__btn {
+    padding: 0 20px 10px 0;
+}
+
+.comment_us__btn button {
+    background-color: #bc9262;
+    border-radius: 6px;
+    outline: none;
+}
+
+.comment__image {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+}
+
+.comment__image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.comment__inform {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.comment__author {
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+    padding: 0 10px 5px 10px;
+}
+
+.author__day {
+    margin-left: 10px;
+}
+
+.bottom__div {
+    height: 20px;
+    width: 100%;
+    background-color: black;
+}
+
+a {
+    color: #bc9262;
+}
+
+.text__item {
+    font-size: 20px;
+}
+
+
+
+
