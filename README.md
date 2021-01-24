@@ -10,4 +10,4 @@
 `8) 08. Freemarker Example`
 `9) 12. Sockets`
 `10) 13.Annotations_SOURCE`
-`11) 16. WebAppExample - CSRF`
+`11) 16. WebAppExample - CSRF`, `16. WebAppExample - CSRF_with_SpringMVC`
