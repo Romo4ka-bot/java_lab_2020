@@ -11,7 +11,7 @@
             </div>
         </div>
         <div>
-            <form action="/home" method="get">
+            <form action="/feed?page=1" method="get">
                 <button style="border-radius: 5px">Главная</button>
             </form>
         </div>

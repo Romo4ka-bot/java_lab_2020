@@ -22,7 +22,7 @@
         </mvc:interceptor>
 
         <mvc:interceptor>
-            <mvc:mapping path="/"/>
+            <mvc:mapping path="/**"/>
             <bean class="ru.itis.javalab.interceptor.CookieInterceptor"/>
         </mvc:interceptor>
 

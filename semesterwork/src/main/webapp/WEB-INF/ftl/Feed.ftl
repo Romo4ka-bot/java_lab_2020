@@ -45,6 +45,9 @@
         </form>
     </div>
 
+    <#if user??>
+        <h4 class="header"><a href="/purchased_feed">Мои путевки</a></h4>
+    </#if>
 
     <div class="card_holder" id="parent">
         <div id="child" style="width: 100%; margin: 10px 0;">

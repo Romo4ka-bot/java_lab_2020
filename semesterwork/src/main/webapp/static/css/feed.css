@@ -212,3 +212,8 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.header {
+    margin: 0 10%;
+    color: white;
+}

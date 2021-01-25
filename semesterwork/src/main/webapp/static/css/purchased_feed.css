@@ -1,0 +1,150 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    text-indent: 20px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #1b1b1b;
+    font-family: Poppins, sans-serif;
+    color: #bc9262;
+    min-height: 100vh;
+}
+
+.navbar-dark {
+    background-color: black;
+}
+
+.navbar-brand {
+    margin: 0 0 0 40px;
+}
+
+.card_holder {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.card_item {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0;
+    background-color: white;
+    height: 200px;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.card__image img {
+    width: 200px;
+    max-height: 200px;
+}
+
+.card__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.card__text {
+    padding: 5px 0 5px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.text__heading div a {
+    text-decoration: none;
+    color: #bc9262;
+}
+
+.heading__review {
+    font-size: 13px;
+}
+
+.heading__review:hover {
+    text-decoration: underline;
+}
+
+.heading__name {
+    font-size: 25px;
+}
+
+.card__prise {
+    border-left: 2px solid #f2f2f2;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.prise__count {
+    margin: 0 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.prise__btn a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.prise__btn a {
+    color: white;
+}
+
+.prise__btn {
+    text-transform: uppercase;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: #bc9262;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.prise__btn:hover {
+    background-color: forestgreen;
+    transition:background-color 0.3s linear;
+}
+
+.bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom__div {
+    height: 20px;
+    width: 100%;
+    background-color: black;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn_try {
+    margin-top: 10px;
+    color: #b6c5c4;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
