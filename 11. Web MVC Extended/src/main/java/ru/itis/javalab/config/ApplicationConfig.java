@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 import ru.itis.javalab.repositories.UsersRepository;
@@ -19,8 +20,9 @@ import ru.itis.javalab.services.UsersServiceImpl;
 import javax.sql.DataSource;
 import java.util.Objects;
 
+@EnableWebMvc
 @Configuration
-@PropertySource("classpath:db.properties")
+@PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "ru.itis.javalab")
 public class ApplicationConfig {
 
@@ -28,23 +30,8 @@ public class ApplicationConfig {
     private Environment environment;
 
     @Bean
-    public UsersService usersService() {
-        return new UsersServiceImpl(usersRepository());
-    }
-
-    @Bean
-    public UsersRepository usersRepository() {
-        return new UsersRepositoryJdbcTemplateImpl(dataSource());
-    }
-
-    @Bean
     public DataSource dataSource() {
         return new HikariDataSource(hikariConfig());
-    }
-
-    @Bean // создали bean с id = objectMapper
-    public ObjectMapper objectMapper() {
-        return new ObjectMapper();
     }
 
     @Bean

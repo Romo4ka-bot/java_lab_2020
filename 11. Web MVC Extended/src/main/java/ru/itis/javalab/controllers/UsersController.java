@@ -16,21 +16,6 @@ public class UsersController {
     @Autowired
     private UsersService usersService;
 
-//    @RequestMapping(value = "/users", method = RequestMethod.GET)
-//    public ModelAndView getUsersPage(HttpServletRequest request, HttpServletResponse response) {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("users_view");
-//        modelAndView.addObject("users", usersService.getAllUsers());
-//        System.out.println("request - " + request + " , response - " + response);
-//        return modelAndView;
-//    }
-//
-//    @RequestMapping(value = "/users", method = RequestMethod.POST)
-//    public ModelAndView addUser(UserDto user) {
-//        usersService.addUser(user);
-//        return new ModelAndView("redirect:/users");
-//    }
-
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String getUsersPage(@RequestParam(value = "page", required = false) Integer page,
                                @RequestParam(value = "size", required = false) Integer size,

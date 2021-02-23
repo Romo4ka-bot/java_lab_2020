@@ -1,5 +1,6 @@
 package ru.itis.javalab.services;
 
+import org.springframework.stereotype.Service;
 import ru.itis.javalab.dto.UserDto;
 import ru.itis.javalab.models.User;
 import ru.itis.javalab.repositories.UsersRepository;
@@ -8,6 +9,7 @@ import java.util.List;
 
 import static ru.itis.javalab.dto.UserDto.from;
 
+@Service
 public class UsersServiceImpl implements UsersService {
 
     private UsersRepository usersRepository;
