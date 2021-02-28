@@ -1,13 +1,12 @@
 package ru.itis.javalab.filters;
 
-import ru.itis.javalab.models.User;
+import ru.itis.javalab.dto.UserDto;
 import ru.itis.javalab.repositories.UsersRepository;
 import ru.itis.javalab.repositories.UsersRepositoryJdbcImpl;
 import ru.itis.javalab.services.UsersService;
 import ru.itis.javalab.services.UsersServiceImpl;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,7 +34,7 @@ public class CookieFilter implements Filter {
         HttpSession session = request.getSession();
         Cookie[] cookies = request.getCookies();
         String currCookie = null;
-        User user = null;
+        UserDto user = null;
 
         if (cookies != null) {
 

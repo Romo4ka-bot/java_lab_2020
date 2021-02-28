@@ -1,16 +1,11 @@
 package ru.itis.javalab.models;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
 @Builder
-@EqualsAndHashCode
-@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     private Long id;
     private String name;
@@ -22,4 +17,10 @@ public class User {
     private String dateBirthday;
     private String dateRegistration;
     private String info;
+    private String confirmCode;
+    private State state;
+
+    public enum State {
+        CONFIRMED, NOT_CONFIRMED
+    }
 }

@@ -1,12 +1,14 @@
 package ru.itis.javalab.services;
 
+import ru.itis.javalab.dto.UserDto;
+import ru.itis.javalab.dto.UserForm;
 import ru.itis.javalab.models.User;
 
 public interface UsersService {
 
-    User authUser(String login);
+    void signUp(UserForm form);
 
-    boolean regUser(User user);
+    User authUser(String login);
 
     User userIsExist(String login);
 
@@ -14,5 +16,7 @@ public interface UsersService {
 
     void updateUser(User user);
 
-    User getUserByLogin(String login);
+    UserDto getUserByLogin(String login);
+
+    UserDto userConfirmCodeIsExist(String confirmCode);
 }

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  * group 11-905
  */
 
-@Component
+//@Component
 public class LoginInterceptor implements HandlerInterceptor {
 
     @Autowired

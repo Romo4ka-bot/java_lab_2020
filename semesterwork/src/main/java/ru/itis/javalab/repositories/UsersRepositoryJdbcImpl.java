@@ -9,6 +9,7 @@ import java.util.List;
 
 public class UsersRepositoryJdbcImpl implements UsersRepository {
 
+    private static final String SQL_SELECT_BY_CONFIRM_CODE = "select * from users where confirm_code = ?";
     private DataSource dataSource;
     private JdbcTemplate template;
 
@@ -16,14 +17,14 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private static final String SQL_SELECT_USER_LOG = "select * from users where login = ?";
 
     //language=SQL
-    private static final String SQL_INSERT_USER = "insert into users(name, surname, login, password, gender, date_registration) " +
-            "values(?, ?, ?, ?, ?, ?);";
+    private static final String SQL_INSERT_USER = "insert into users(name, surname, login, password, gender, date_registration, confirm_code, state) " +
+            "values(?, ?, ?, ?, ?, ?, ?, ?);";
 
     //language=SQL
     private static final String SQL_SELECT_BY_ID = "select * from users where id = ?";
 
     //language=SQL
-    private static final String SQL_UPDATE = "update users set name = ?, surname = ?, photo = ?, date_birthday = ?, gender = ?, info = ? where id = ?";
+    private static final String SQL_UPDATE = "update users set name = ?, surname = ?, photo = ?, date_birthday = ?, gender = ?, info = ?, confirm_code = ?, state = ? where id = ?";
 
     //language=SQL
     private static final String SQL_SELECT_ALL_WITH_PAGES = "select * from users order by id limit ? offset ?;";
@@ -39,6 +40,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
             .dateBirthday(row.getString("date_birthday"))
             .dateRegistration(row.getString("date_registration"))
             .info(row.getString("info"))
+            .confirmCode(row.getString("confirm_code"))
+            .state(Enum.valueOf(User.State.class, row.getString("state")))
             .build();
 
 
@@ -67,8 +70,10 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
         String password = entity.getPassword();
         String gender = entity.getGender();
         String dateRegistration = entity.getDateRegistration();
+        String confirmCode = entity.getConfirmCode();
+        String state = entity.getState().toString();
 
-        template.update(SQL_INSERT_USER, name, surname, login, password, gender, dateRegistration);
+        template.update(SQL_INSERT_USER, name, surname, login, password, gender, dateRegistration, confirmCode, state);
     }
 
     @Override
@@ -81,8 +86,10 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
         String dateBirthday = entity.getDateBirthday();
         String gender = entity.getGender();
         String info = entity.getInfo();
+        String confirmCode = entity.getConfirmCode();
+        String state = entity.getState().toString();
 
-        template.update(SQL_UPDATE, name, surname, photo, dateBirthday, gender, info, id);
+        template.update(SQL_UPDATE, name, surname, photo, dateBirthday, gender, info, confirmCode, state, id);
     }
 
     @Override
@@ -96,5 +103,10 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     @Override
     public List<User> findAll(int page, int size) {
         return template.query(SQL_SELECT_ALL_WITH_PAGES, userRowMapper, size, page * size);
+    }
+
+    @Override
+    public User findByConfirmCode(String confirmCode) {
+        return template.query(SQL_SELECT_BY_CONFIRM_CODE, userRowMapper, confirmCode).get(0);
     }
 }

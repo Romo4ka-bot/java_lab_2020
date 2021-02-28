@@ -1,9 +1,8 @@
 package ru.itis.javalab.interceptor;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-import ru.itis.javalab.models.User;
+import ru.itis.javalab.dto.UserDto;
 import ru.itis.javalab.services.UsersService;
 
 import javax.servlet.http.Cookie;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpSession;
  * group 11-905
  */
 
-@Component
+//@Component
 public class CookieInterceptor implements HandlerInterceptor {
 
     @Autowired
@@ -29,7 +28,7 @@ public class CookieInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         Cookie[] cookies = request.getCookies();
         String currCookie = null;
-        User user = null;
+        UserDto user = null;
 
         if (cookies != null) {
 

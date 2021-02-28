@@ -64,25 +64,25 @@ public class RegistrationServlet extends HttpServlet {
             String date = formatForDateNow.format(dateNow);
             user.setDateRegistration(date);
 
-            boolean status = usersService.regUser(user);
+//            boolean status = usersService.regUser(user);
 
-            if (status) {
-                User userDb = usersService.getUserByLogin(login);
-                HttpSession session = req.getSession();
-                session.setAttribute("user", userDb);
-                req.getRequestDispatcher("/Login.ftl").forward(req, resp);
-            } else {
-                req.setAttribute("errMessage", "this user already exists");
-                req.getRequestDispatcher("/Registration.ftl").forward(req, resp);
-            }
-        } else {
-            req.setAttribute("errMessage", "this user already exists");
-            req.getRequestDispatcher("/Registration.ftl").forward(req, resp);
+//            if (status) {
+//                User userDb = usersService.getUserByLogin(login);
+//                HttpSession session = req.getSession();
+//                session.setAttribute("user", userDb);
+//                req.getRequestDispatcher("/Login.ftl").forward(req, resp);
+//            } else {
+//                req.setAttribute("errMessage", "this user already exists");
+//                req.getRequestDispatcher("/Sign_up.ftl").forward(req, resp);
+//            }
+//        } else {
+//            req.setAttribute("errMessage", "this user already exists");
+//            req.getRequestDispatcher("/Sign_up.ftl").forward(req, resp);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/Registration.ftl").forward(req, resp);
+        req.getRequestDispatcher("/Sign_up.ftl").forward(req, resp);
     }
 }

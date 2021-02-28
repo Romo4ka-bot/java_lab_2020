@@ -56,7 +56,7 @@
 
                         <div class="form__bottom">
                             <div class="form__bottom__sing_up">
-                                <a href="/registration">Sing up</a>
+                                <a href="/signUp">Sing up</a>
                             </div>
                             <div class="form__bottom__checkbox">
                                 <input class="checkbox" name="check" type="checkbox">
